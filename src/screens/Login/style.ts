@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
       marginTop: 15
     },
     input:{
-      borderColor: "#888888",
       borderWidth: 1,
       width: '100%',
       borderRadius: 8,
@@ -50,6 +49,16 @@ const styles = StyleSheet.create({
       paddingHorizontal: 15 
     },
     buttonLogin:{
+      width: '100%',
+      height: 48,
+      backgroundColor: '#CDD1C4',
+      borderRadius: 8,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 15,
+      marginBottom: 30
+    },
+    enableButtonLogin:{
       width: '100%',
       height: 48,
       backgroundColor: "#EAEAEA",
