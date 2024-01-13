@@ -10,7 +10,8 @@ const Stack = createStackNavigator<PublicStackParamList>();
 export function PublicRoutes() {
   return (
     <Stack.Navigator
-      initialRouteName="SignUp"
+
+      initialRouteName="Login"
       screenOptions={{ cardStyle: { backgroundColor: '#fff' } }}
     >
       {/* Routes Start */}
