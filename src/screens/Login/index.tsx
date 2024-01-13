@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { RefObject, useRef, useEffect } from 'react';
 
 import {
 
- Text, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform, ScrollView
+ Text, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform, ScrollView, Keyboard
 } from 'react-native';
 import styles from './style'
 
@@ -12,6 +12,30 @@ export function Login() {
 
   const requireImage = require('./../../assets/Ilustra.png')
   const googleIcon = require('./../../assets/google.png')
+  const scrollViewRef: RefObject<ScrollView> = useRef<ScrollView>(null);
+
+  // Function to scroll to the end of ScrollView
+  const scrollToBottom = () => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollToEnd({ animated: true });
+    }
+  };
+
+  useEffect(() => {
+    // Scroll to the bottom after the keyboard is fully open
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        scrollToBottom();
+      }
+    );
+
+    return () => {
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+
 
   return (
     <KeyboardAvoidingView 
@@ -20,6 +44,7 @@ export function Login() {
     keyboardVerticalOffset={70}
     >
       <ScrollView
+      ref={scrollViewRef}
       contentContainerStyle={{ flexGrow:1, alignItems: 'center' }}
       >
       <Text style={styles.title}>
@@ -44,10 +69,12 @@ export function Login() {
       <TextInput
         placeholder='E-mail ou nome de usuário'
         style={styles.input}
+        onFocus={scrollToBottom}
       />
       <TextInput
         placeholder='Senha'
         style={styles.input}
+        onFocus={scrollToBottom}
       />
       </View>
       <Text style={{textAlign:'left', width: '100%', color: "#4D5061", fontSize: 16, marginTop: 3}}>
