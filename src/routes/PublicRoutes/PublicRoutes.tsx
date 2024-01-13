@@ -17,6 +17,7 @@ export function PublicRoutes() {
       <Stack.Screen
         name="Login"
         component={Login}
+        options={{ headerShown: false }}
       />
       {/* Routes End */}
     </Stack.Navigator>
