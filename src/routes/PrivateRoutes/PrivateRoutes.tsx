@@ -14,7 +14,11 @@ export default function PrivateRoutes() {
     <Stack.Navigator
       initialRouteName="Feed"
     >
-      <Stack.Screen name="Feed" component={Feed} />
+      <Stack.Screen 
+        name="Feed" 
+        component={Feed} 
+        options={{ headerShown: false }} 
+      />
     </Stack.Navigator>
   );
 }

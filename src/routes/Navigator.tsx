@@ -5,7 +5,7 @@ import PrivateRoutes from './PrivateRoutes/PrivateRoutes';
 // Imports End
 
 export default function Navigator() {
-  const [ user, setUser ] = useState(false)
+  const [ user, setUser ] = useState(true)
 
   return user ? <PrivateRoutes /> : <PublicRoutes />;
 }
