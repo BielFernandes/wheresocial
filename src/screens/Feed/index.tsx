@@ -8,6 +8,7 @@ import {
   View,
   TouchableOpacity,
   GestureResponderEvent,
+  ImageBackground,
 } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { PostComponent } from '../../components/Post/PostComponent';
@@ -74,11 +75,6 @@ export function Feed() {
 
   const [activeIndex, setActiveIndex] = useState('post');
 
-  const yourObject = {
-    Posts: ['Post 1', 'Post 2', 'Post 3'],
-    Likes: ['Liked Post 1', 'Liked Post 2'],
-  };
-
   const mockPost = [
     {
       id:1,
@@ -105,7 +101,7 @@ export function Feed() {
 
   const renderTabContent = () => {
     if (activeIndex === 'post') {
-      return mockPost.map((post, index) => <View key={post.id}><PostComponent id={post.id} nickname={post.nickname} username={post.username} content={post.content} tags={post.tags}/></View>);
+      return mockPost.map((post, index) => <View key={post.id}><PostComponent actionPlacehold={true} inModal={false} id={post.id} nickname={post.nickname} username={post.username} content={post.content} tags={post.tags}/></View>);
     } else if (activeIndex === 'share') {
       // return yourObject.Likes.map((likedPost, index) => <ShareComponent key={index} />);
     } else if (activeIndex === 'like') {
@@ -117,6 +113,7 @@ export function Feed() {
 
   return (
       <ScrollView contentContainerStyle={{ flexGrow:1, alignItems: 'center' }}>
+        <ImageBackground source={bannerPicture} style={styles.backgroundImage}/>
         <Image source={profilePicture} style={styles.profilePic} />
         <Text style={styles.userName}>{username}</Text>
         <View style={styles.nicknameView}>
@@ -246,6 +243,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: 120,
+    position: 'absolute'
   },
   container: {
     flex: 1,
