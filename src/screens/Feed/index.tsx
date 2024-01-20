@@ -14,6 +14,9 @@ import { SvgXml } from 'react-native-svg';
 import { PostComponent } from '../../components/Post/PostComponent';
 import { ShareComponent } from '../../components/Share/ShareComponent';
 import { LikeComponent } from '../../components/Like/LikeComponent';
+import PostsMocked from '../../mocks/posts.json'
+import { FeedProps } from './types';
+
 
 type ToggleModalFunction = (closeModalBtn?: boolean) => void;
 
@@ -23,7 +26,7 @@ const EditProfileIcon = () => {
   return <SvgXml xml={svgMarkup} width="20" height="20" />;
 };
 
-export function Feed() {
+export function Feed({navigation}: FeedProps) {
   const profilePicture = require('./profile.png');
   const bannerPicture = require('./coverbanner.png');
 
@@ -75,33 +78,21 @@ export function Feed() {
 
   const [activeIndex, setActiveIndex] = useState('post');
 
-  const mockPost = [
-    {
-      id:1,
-      username,
-      nickname,
-      content: 'Muito bom amar e ser amado',
-      tags:['#love', '#socialove', '#l4l']
-    },
-    {
-      id:2,
-      username,
-      nickname,
-      content: 'Bom dia rede',
-      tags:['#rede', '#aaaaaaa', '#l4testel']
-    },
-    {
-      id:3,
-      username,
-      nickname,
-      content: 'Bom dia rede',
-      tags:['#rede', '#aaaaaaa', '#l4testel']
-    }
-  ]
-
   const renderTabContent = () => {
     if (activeIndex === 'post') {
-      return mockPost.map((post, index) => <View key={post.id}><PostComponent actionPlacehold={true} inModal={false} id={post.id} nickname={post.nickname} username={post.username} content={post.content} tags={post.tags}/></View>);
+      return PostsMocked.map((post, index) => 
+        <View key={post.id}>
+          <PostComponent 
+            id={post.id} 
+            nickname={post.nickname} 
+            username={post.username} 
+            content={post.content} 
+            likesCount={post.like_count} 
+            tags={post.tags}   
+            endBorderRadius={true}
+            onPress={() => navigation.navigate('CommentScreen', {postId: post.id})}
+            />
+        </View>);
     } else if (activeIndex === 'share') {
       // return yourObject.Likes.map((likedPost, index) => <ShareComponent key={index} />);
     } else if (activeIndex === 'like') {
