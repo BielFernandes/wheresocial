@@ -60,7 +60,7 @@ export function PostComponent(props:PostComponentProps){
         <TouchableOpacity style={{width: 100, flexDirection: 'row', gap: 5}} onPress={props.onPress}>
           {
             !props.endBorderRadius ?
-            <Image source={require('../../screens/PostDetails/message.png')} style={styles.actionBtn}/> :
+            <Image source={require('../../screens/CommentScreen/message.png')} style={styles.actionBtn}/> :
             <Image source={require('../../screens/Feed/comment.png')} style={styles.actionBtn}/> 
             
 

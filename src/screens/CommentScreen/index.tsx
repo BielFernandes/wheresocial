@@ -59,7 +59,7 @@ const CommentScreen: React.FC<CommentScreenProps> = ({ route }) => {
       >
         <Image
           style={{ width: 30, height: 25, resizeMode:'contain' }}
-          source={require('../../screens/PostDetails/message.png')}
+          source={require('../../screens/CommentScreen/message.png')}
         />
       </TouchableOpacity>
 
