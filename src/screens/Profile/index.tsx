@@ -74,7 +74,7 @@ export function Feed({navigation}: FeedProps) {
 
   const [showFullText, setShowFullText] = useState(false);
 
-  const displayedText = showFullText ? bio : bio.slice(0, 45) + '...';
+  const displayedText = showFullText ? bio : bio.slice(0, 50) + '...';
 
   const [activeIndex, setActiveIndex] = useState('post');
 
@@ -136,7 +136,7 @@ export function Feed({navigation}: FeedProps) {
         </View>
         <View style={styles.bioView}>
           <Text style={styles.statsLabel}>Biografia: </Text>
-          <Text>{displayedText}</Text>
+          <Text style={{width: '80%'}}>{displayedText}</Text>
         </View>
         {bio.length > 45 && (
           <TouchableOpacity onPress={() => setShowFullText(!showFullText)}>
