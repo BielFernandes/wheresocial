@@ -1,6 +1,6 @@
 import {  useState } from "react";
-import { Text, View, Image, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Text, View, Image, TouchableOpacity } from "react-native";
+import { styles } from "./styles";
 type PostComponentProps = {
   id: any
   username: any
@@ -15,7 +15,6 @@ type PostComponentProps = {
 export function PostComponent(props:PostComponentProps){
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(props.likesCount);
-  const [modalVisible, setModalVisible] = useState(false);
 
   const toggleLike = () => {
     setIsLiked(!isLiked)
@@ -25,7 +24,6 @@ export function PostComponent(props:PostComponentProps){
       setLikeCount(likeCount - 1)
     }
   }
-  
 
     return(
       <>
@@ -48,7 +46,7 @@ export function PostComponent(props:PostComponentProps){
           {
             !isLiked ? 
             <TouchableOpacity style={{width: 100, flexDirection: 'row', gap: 5}} onPress={()=> toggleLike()}>
-              <Image source={require('../../screens/Feed/unlike.png')} style={styles.actionBtn}/> 
+              <Image source={require('../../screens/Feed/unlike.png')} style={styles.actionBtn}/>
               <Text style={{color: 'white', fontSize: 12}}> Curtir </Text>
             </TouchableOpacity>
             :
@@ -76,15 +74,3 @@ export function PostComponent(props:PostComponentProps){
         </>
     )
 }
-
-const styles = StyleSheet.create({
-  container:{flexDirection: 'column', width: 365},
-  contentView:{flexDirection: 'column', width: '100%', padding:15, height: 126, justifyContent: 'space-between', borderWidth: 1, borderColor:'rgba(0, 0, 0, 0.20)', borderTopEndRadius:8,borderTopStartRadius:8},
-  userInfoView:{flexDirection: 'row', alignItems:'center', gap: 10},
-  userPicture:{width:40, height: 40, borderRadius: 200},
-  content:{fontSize:16, color: '#30323D'},
-  tagsContainer:{width: '100%', flexDirection: 'row', gap: 5},
-  tag:{fontSize:12, color: 'rgba(136, 136, 136, 1)'},
-  postActions:{width: '100%', height: 48, backgroundColor: '#5C80BC', borderWidth: 1, borderColor:'rgba(0, 0, 0, 0.20)', paddingHorizontal:25, flexDirection: 'row', alignItems: 'center', justifyContent:'space-between'},
-  actionBtn:{width: 18, height: 18}
-})
