@@ -16,6 +16,7 @@ function App(): React.JSX.Element {
           <Navigator />
         </NavigationContainer>
       </SafeAreaProvider>
+
     </View>
   );
 }
