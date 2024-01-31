@@ -1,2 +1,3 @@
 export { Login } from "./Login";
-export { Feed } from "./Feed";
+export { Feed } from "./Profile";
+export { CommentScreen } from "./CommentScreen";
