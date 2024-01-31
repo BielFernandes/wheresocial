@@ -20,7 +20,15 @@ export default function PrivateRoutes() {
       <Stack.Screen 
         name="CommentScreen" 
         component={CommentScreen} 
-        options={{ headerShown: true }} 
+        options={{ 
+          headerShown: true,
+          headerTitleStyle: {
+            fontWeight: '100',
+            fontSize: 18
+          },
+          headerTitleAlign: 'center',
+          headerTitle: 'Comentários'
+        }} 
       />
     </Stack.Navigator>
   );
