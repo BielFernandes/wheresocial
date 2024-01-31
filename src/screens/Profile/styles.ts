@@ -42,12 +42,11 @@ export const styles = StyleSheet.create({
     },
     modal: {
       width: 361,
-      height: 372,
       borderRadius: 8,
       padding: 17,
       backgroundColor: 'white',
       position: 'absolute',
-      top: '40%',
+      top: '30%',
     },
     inputModalLabels: {
       fontSize: 16,

@@ -184,8 +184,8 @@ export function Feed({navigation}: FeedProps) {
             <View style={styles.modalBackground} />
             <View style={styles.modal}>
               <TouchableOpacity
-                onPress={(event: GestureResponderEvent) => toggleModal(true)}
-                style={{ position: 'absolute', left: 330, bottom: 335 }}
+                style={{ position: 'absolute', left: 330, bottom: 390 }}
+                onPress={(event: GestureResponderEvent) => toggleModal(false)}
               >
                 <Text style={{ color: 'black', fontSize: 24 }}>X</Text>
               </TouchableOpacity>
@@ -221,6 +221,7 @@ export function Feed({navigation}: FeedProps) {
                   style={styles.inputBio}
                 />
               </View>
+              <TouchableOpacity onPress={(event: GestureResponderEvent) => toggleModal(true)} style={{height: 50, backgroundColor: 'blue', marginTop: 12, borderRadius: 8, justifyContent: 'center', alignItems: 'center'}}><Text>Salvar</Text></TouchableOpacity>
             </View>
           </>
         )}
