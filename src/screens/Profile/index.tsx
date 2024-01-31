@@ -221,7 +221,7 @@ export function Feed({navigation}: FeedProps) {
                   style={styles.inputBio}
                 />
               </View>
-              <TouchableOpacity onPress={(event: GestureResponderEvent) => toggleModal(true)} style={{height: 50, backgroundColor: 'blue', marginTop: 12, borderRadius: 8, justifyContent: 'center', alignItems: 'center'}}><Text>Salvar</Text></TouchableOpacity>
+              <TouchableOpacity onPress={(event: GestureResponderEvent) => toggleModal(true)} style={{height: 50, backgroundColor: '#5C80BC', marginTop: 12, borderRadius: 8, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'white'}}>Salvar</Text></TouchableOpacity>
             </View>
           </>
         )}
