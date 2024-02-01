@@ -46,7 +46,7 @@ const CommentScreen: React.FC<CommentScreenProps> = ({ route }) => {
         >
           <Image
             style={styles.commentIcon}
-            source={require('../../screens/CommentScreen/message.png')}
+            source={require('../../assets/message.png')}
           />
         </TouchableOpacity>
       </View>

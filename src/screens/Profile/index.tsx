@@ -27,8 +27,8 @@ const EditProfileIcon = () => {
 };
 
 export function Feed({navigation}: FeedProps) {
-  const profilePicture = require('./profile.png');
-  const bannerPicture = require('./coverbanner.png');
+  const profilePicture = require('../../assets/profile.png');
+  const bannerPicture = require('../../assets/coverbanner.png');
 
   const [isModalVisible, setModalVisible] = useState(false);
 

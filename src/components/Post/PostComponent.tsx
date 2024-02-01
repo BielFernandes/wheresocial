@@ -30,7 +30,7 @@ export function PostComponent(props:PostComponentProps){
         <View style={styles.container}>
           <View style={styles.contentView}>
             <View style={styles.userInfoView}>
-              <Image source={require('../../screens/Profile/profile.png')} style={styles.userPicture} />
+              <Image source={require('../../assets/profile.png')} style={styles.userPicture} />
               <Text style={{fontSize: 16}}>@{props.nickname} · 3 h</Text>
             </View>
               <Text style={styles.content}>{props.content}</Text>
@@ -46,27 +46,27 @@ export function PostComponent(props:PostComponentProps){
           {
             !isLiked ? 
             <TouchableOpacity style={{width: 100, flexDirection: 'row', gap: 5}} onPress={()=> toggleLike()}>
-              <Image source={require('../../screens/Profile/unlike.png')} style={styles.actionBtn}/>
+              <Image source={require('../../assets/unlike.png')} style={styles.actionBtn}/>
               <Text style={{color: 'white', fontSize: 12}}> Curtir </Text>
             </TouchableOpacity>
             :
             <TouchableOpacity style={{width: 100, flexDirection: 'row', gap: 5}} onPress={()=> toggleLike()}>
-              <Image source={require('../../screens/Profile/like.png')} style={styles.actionBtn}/>
+              <Image source={require('../../assets/like.png')} style={styles.actionBtn}/>
               <Text style={{color: 'red', fontSize: 12}}> { likeCount } </Text>
             </TouchableOpacity>
           }
         <TouchableOpacity style={{width: 100, flexDirection: 'row', gap: 5}} onPress={props.onPress}>
           {
             !props.endBorderRadius ?
-            <Image source={require('../../screens/CommentScreen/message.png')} style={styles.actionBtn}/> :
-            <Image source={require('../../screens/Profile/comment.png')} style={styles.actionBtn}/> 
+            <Image source={require('../../assets/message.png')} style={styles.actionBtn}/> :
+            <Image source={require('../../assets/comment.png')} style={styles.actionBtn}/> 
             
 
           }
           <Text style={{color:'white', fontSize: 12}}>Comentar</Text>
         </TouchableOpacity>
           <TouchableOpacity style={{width: 100, flexDirection: 'row', gap: 5}}>
-            <Image source={require('../../screens/Profile/share.png')} style={{...styles.actionBtn, marginTop: 3}}/> 
+            <Image source={require('../../assets/share.png')} style={{...styles.actionBtn, marginTop: 3}}/> 
             <Text style={{color:'white', fontSize: 12}}>Compartilhar</Text>
           </TouchableOpacity>
         </View>

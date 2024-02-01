@@ -6,7 +6,7 @@ export function Comment(props:any){
 
   return (
       <View style={styles.contentView}>
-          <Image source={require('./profile-pic.jpg')} style={styles.userPicture} />
+          <Image source={require('../../assets/profile-pic.jpg')} style={styles.userPicture} />
           <View style={{width: '100%', height:40}}>
             <View style={styles.infosView}>
               <Text style={styles.nicknameText} >@{props.nickname}</Text>
