@@ -1,7 +1,8 @@
 import {
 
-    StyleSheet, Text, View
+    Text, View
   } from 'react-native';
+import { styles } from './styles';
 
 export function Divisor(){
     return(
@@ -13,15 +14,3 @@ export function Divisor(){
     )
 }
 
-const styles = StyleSheet.create({
-    parentContainer:{
-        flexDirection: 'row', 
-        alignItems: 'center', 
-        gap: 10
-    },
-    divise:{
-        width: '43%', 
-        backgroundColor: '#CDD1C4', 
-        height: 1
-    },
-})

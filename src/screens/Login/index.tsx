@@ -4,7 +4,7 @@ import {
 
  Text, View, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform, ScrollView, Keyboard
 } from 'react-native';
-import styles from './style'
+import styles from './styles'
 
 import { Divisor } from '../../components/divisor/divisor';
 

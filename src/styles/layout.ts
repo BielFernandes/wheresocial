@@ -15,5 +15,5 @@ export enum Radius {
     Large = 22,
     ExtraLarge = 24,
     DoubleExtraLarge = 36,
-    TripleExtraLarge = 42,
+    TripleExtraLarge = 40,
   }
