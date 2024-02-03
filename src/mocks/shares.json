@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "username": "Jhonathan",
+        "nickname": "jh013",
+        "content": "Péssimo dia!",
+        "comments": [
+            {
+                "id": 25,
+                "author":"Zikinha",
+                "content": "nem fala"
+            },
+            {
+                "id": 99,
+                "author":"José",
+                "content": "que negatividade"
+            }
+        ],
+        "like": false,
+        "like_count": 1,
+        "comment_count": 2,
+        "post":{
+            "id": 1,
+            "username": "Gabriel",
+            "nickname": "Bielzinhov8",
+            "content": "Bom dia",
+            "like": false,
+            "like_count": 4,
+            "comment_count": 2,
+            "comments": [
+                {
+                    "id": 1,
+                    "author":"Jhonathan",
+                    "content": "Bom dia Gabriel"
+                },
+                {
+                    "id": 2,
+                    "author":"Rosana",
+                    "content": "Bom dia Biel"
+                }
+            ],
+            "likes": [
+                {
+                    "author": "Rosana"
+                }
+            ],
+          "tags":["#rede", "#aaaaaaa", "#l4testel"]
+    
+        },
+        "tags":["#rede", "#aaaaaaa", "#l4testel"]
+    }
+]

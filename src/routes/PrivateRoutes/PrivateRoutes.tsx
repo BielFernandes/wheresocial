@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import {
-Feed, CommentScreen
+Feed, CommentScreen, Home
 } from '../../screens';
 import { PrivateStackParamList } from './types';
 
@@ -29,6 +29,11 @@ export default function PrivateRoutes() {
           headerTitleAlign: 'center',
           headerTitle: 'Comentários'
         }} 
+      />
+      <Stack.Screen 
+        name="Home" 
+        component={Home} 
+        options={{ headerShown: false }} 
       />
     </Stack.Navigator>
   );

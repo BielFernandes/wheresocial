@@ -7,7 +7,7 @@ export enum Radius {
   
   export enum Spacing {
     DoubleExtraSmall = 4,
-    ExtraSmall = 6,
+    ExtraSmall = 8,
     Small = 10,
     Base = 12,
     Alternative = 16,

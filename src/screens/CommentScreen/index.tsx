@@ -4,9 +4,11 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import { PrivateStackParamList } from '../../routes/PrivateRoutes/types';
 import Posts from "../../mocks/posts.json"
+import Shares from "../../mocks/shares.json"
 import { PostComponent } from '../../components/Post/PostComponent';
 import { Comment } from '../../components/Comment/Comment';
 import { ScrollView } from 'react-native-gesture-handler';
+import { ShareComponent } from '../../components/Share/ShareComponent';
 
 type PostDetailsRouteProp = RouteProp<PrivateStackParamList, 'CommentScreen'>;
 
@@ -15,15 +17,21 @@ interface CommentScreenProps {
 }
 
 const CommentScreen: React.FC<CommentScreenProps> = ({ route }) => {
-  const postId = route.params?.postId
+  const postId = route.params?.postId;
+  const shareId = route.params?.postId;
 
-  let post = Posts.find(post => post.id == postId)
+  const post = postId ? Posts.find(post => post.id === postId) : undefined;
+  const share = shareId ? Shares.find(share => share.id === shareId) : undefined;
 
-  const [commentModal, setCommentModal] = useState(false)
+  const [commentModal, setCommentModal] = useState(false);
 
   return (
     <>
+    {
+      route.params.type == 'post' ?
+      <>
       <View style={styles.container}>
+
         <PostComponent
           id={post?.id}
           nickname={post?.nickname}
@@ -50,6 +58,40 @@ const CommentScreen: React.FC<CommentScreenProps> = ({ route }) => {
           />
         </TouchableOpacity>
       </View>
+      </>
+      :
+      <>
+      <View style={styles.container}>
+
+        <ShareComponent
+          id={share?.id}
+          nickname={share?.nickname}
+          username={share?.username}
+          content={share?.content}
+          likesCount={share?.like_count}
+          tags={share?.tags}
+          post={share?.post}
+          endBorderRadius={false}
+        />
+        <ScrollView>
+          {share?.comments.map(comment => (
+            <View key={comment.id}>
+              <Comment nickname={comment.author} content={comment.content} />
+            </View>
+          ))}
+        </ScrollView>
+        <TouchableOpacity
+          style={styles.commentButton}
+          onPress={() => setCommentModal(true)}
+        >
+          <Image
+            style={styles.commentIcon}
+            source={require('../../assets/message.png')}
+          />
+        </TouchableOpacity>
+      </View>
+      </>
+    }
       {commentModal && (
         <>
           <View style={styles.modalContainer}>

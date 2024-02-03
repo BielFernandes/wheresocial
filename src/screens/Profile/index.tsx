@@ -14,6 +14,7 @@ import { PostComponent } from '../../components/Post/PostComponent';
 import { ShareComponent } from '../../components/Share/ShareComponent';
 import { LikeComponent } from '../../components/Like/LikeComponent';
 import PostsMocked from '../../mocks/posts.json'
+import SharesMocked from '../../mocks/shares.json'
 import { FeedProps } from './types';
 import { styles } from './styles';
 
@@ -90,11 +91,25 @@ export function Feed({navigation}: FeedProps) {
             likesCount={post.like_count} 
             tags={post.tags}   
             endBorderRadius={true}
-            onPress={() => navigation.navigate('CommentScreen', {postId: post.id})}
+            onPress={() => navigation.navigate('CommentScreen', {postId: post.id, type: 'post'})}
             />
         </View>);
     } else if (activeIndex === 'share') {
-      // return yourObject.Likes.map((likedPost, index) => <ShareComponent key={index} />);
+      return SharesMocked.map((share, index) => 
+        <View key={share.id}>
+          <ShareComponent 
+            id={share.id}
+            nickname={share.nickname}
+            username={share.username}
+            content={share.content}
+            likesCount={share.like_count}
+            post={share.post}
+            tags={share.tags}
+            endBorderRadius={true}
+            onPress={() => navigation.navigate('CommentScreen', {postId: share.id, type: 'share'})}
+            onPressToPost={() => navigation.navigate('CommentScreen', {postId: share.post.id, type: 'post'})}
+            />
+        </View>);
     } else if (activeIndex === 'like') {
       // return yourObject.Likes.map((likedPost, index) => <LikeComponent key={index} />);
     }
