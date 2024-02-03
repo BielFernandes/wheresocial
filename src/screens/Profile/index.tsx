@@ -17,6 +17,7 @@ import PostsMocked from '../../mocks/posts.json'
 import SharesMocked from '../../mocks/shares.json'
 import { FeedProps } from './types';
 import { styles } from './styles';
+import Navbar from '../../components/Navbar/Navbar';
 
 
 type ToggleModalFunction = (closeModalBtn?: boolean) => void;
@@ -118,6 +119,7 @@ export function Feed({navigation}: FeedProps) {
   };
 
   return (
+      <>
       <ScrollView contentContainerStyle={{ flexGrow:1, alignItems: 'center' }}>
         <ImageBackground source={bannerPicture} style={styles.backgroundImage}/>
         <Image source={profilePicture} style={styles.profilePic} />
@@ -241,6 +243,9 @@ export function Feed({navigation}: FeedProps) {
           </>
         )}
       </ScrollView>
+      <Navbar/>
+      </>
+
       
   );
 }

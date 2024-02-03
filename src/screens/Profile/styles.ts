@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
       padding: 17,
       backgroundColor: 'white',
       position: 'absolute',
-      top: '30%',
+      top: '20%',
     },
     inputModalLabels: {
       fontSize: 16,

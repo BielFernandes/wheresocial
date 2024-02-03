@@ -9,6 +9,7 @@ import { PostComponent } from '../../components/Post/PostComponent';
 import { Comment } from '../../components/Comment/Comment';
 import { ScrollView } from 'react-native-gesture-handler';
 import { ShareComponent } from '../../components/Share/ShareComponent';
+import Navbar from '../../components/Navbar/Navbar';
 
 type PostDetailsRouteProp = RouteProp<PrivateStackParamList, 'CommentScreen'>;
 
@@ -108,6 +109,7 @@ const CommentScreen: React.FC<CommentScreenProps> = ({ route }) => {
           </View>
         </>
       )}
+      <Navbar/>
     </>
   );
 };

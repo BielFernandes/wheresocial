@@ -33,7 +33,7 @@ export default function PrivateRoutes() {
       <Stack.Screen 
         name="Home" 
         component={Home} 
-        options={{ headerShown: false }} 
+        options={{ headerShown: true }} 
       />
     </Stack.Navigator>
   );

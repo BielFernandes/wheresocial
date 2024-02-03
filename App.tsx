@@ -1,23 +1,19 @@
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigator from './src/routes/Navigator';
-import {
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationProvider } from './src/contexts/NavigationContext';
 
-  StyleSheet, Text, View,
-} from 'react-native';
-
-function App(): React.JSX.Element {
-
+function App() {
   return (
-    <View style={{ flex: 1, width: '100%' }}>
-      <SafeAreaProvider>
+    <SafeAreaProvider>
+      <NavigationProvider>
         <NavigationContainer>
           <Navigator />
         </NavigationContainer>
-      </SafeAreaProvider>
-
-    </View>
+      </NavigationProvider>
+    </SafeAreaProvider>
   );
 }
+
 export default App;
