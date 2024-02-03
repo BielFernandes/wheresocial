@@ -6,10 +6,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 interface NavbarButtonProps {
   screenName: string;
   iconName: ImageSourcePropType;
-  iconName2: ImageSourcePropType;
 }
 
-const NavbarButton: React.FC<NavbarButtonProps> = ({ screenName, iconName, iconName2 }) => {
+const NavbarButton: React.FC<NavbarButtonProps> = ({ screenName, iconName }) => {
   const navigation = useNavigation();
   const route = useRoute();
   const [isActive, setIsActive] = useState(false);
@@ -26,7 +25,7 @@ const NavbarButton: React.FC<NavbarButtonProps> = ({ screenName, iconName, iconN
     <TouchableOpacity onPress={handlePress} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View style={{ padding: 10, borderRadius: 10 }}>
         <Image
-          source={!isActive ? iconName : iconName2}
+          source={iconName}
           style={{ width: 30, height: 30, tintColor: isActive ? '#5C80BC' : '#4D5061' }}
         />
       </View>

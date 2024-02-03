@@ -23,11 +23,11 @@ const Navbar: React.FC = () => {
 
   return (
     <View style={{ flexDirection: 'row', height: 60, alignItems: 'center', justifyContent: 'space-around' }}>
-      <NavbarButton screenName="Home" iconName={homeImagePath} iconName2={homeColoredImagePath} />
-      <NavbarButton screenName="Feed" iconName={searchImagePath} iconName2={searchColoredImagePath} />
-      <NavbarButton screenName="" iconName={cameraImagePath} iconName2={cameraColoredImagePath} />
-      <NavbarButton screenName="" iconName={bellImagePath} iconName2={bellColoredImagePath} />
-      <NavbarButton screenName="" iconName={hamburgerImagePath} iconName2={hamburgerColoredImagePath} />
+      <NavbarButton screenName="Home" iconName={homeImagePath}/>
+      <NavbarButton screenName="Feed" iconName={searchImagePath} />
+      <NavbarButton screenName="" iconName={cameraImagePath}/>
+      <NavbarButton screenName="" iconName={bellImagePath}/>
+      <NavbarButton screenName="" iconName={hamburgerImagePath}/>
     </View>
   );
 }
