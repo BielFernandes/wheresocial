@@ -1,16 +1,22 @@
-// NavbarButton.tsx
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, Image, View, Text, ImageSourcePropType } from 'react-native';
+import { TouchableOpacity, Image, View, ImageSourcePropType } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { Configuration } from '../../screens';
+import { useHamburger } from '../../contexts/HamburgerContext';
 
 interface NavbarButtonProps {
-  screenName: string;
+  screenName?: string;
   iconName: ImageSourcePropType;
+  hamburger?: boolean;
+  onPress?: () => void; // Adicione a propriedade onPress
 }
 
-const NavbarButton: React.FC<NavbarButtonProps> = ({ screenName, iconName }) => {
+// ...
+
+const NavbarButton: React.FC<NavbarButtonProps> = ({ screenName, iconName, hamburger }) => {
   const navigation = useNavigation();
   const route = useRoute();
+  const { hamburginho, setHamburginho } = useHamburger();
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -18,11 +24,17 @@ const NavbarButton: React.FC<NavbarButtonProps> = ({ screenName, iconName }) => 
   }, [route, screenName]);
 
   const handlePress = () => {
-    navigation.navigate(screenName as never);
+    if (screenName) {
+      navigation.navigate(screenName as never);
+    }
+  };
+
+  const handlePressMenuBar = () => {
+    setHamburginho(true);
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <TouchableOpacity onPress={hamburger ? handlePressMenuBar : handlePress} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View style={{ padding: 10, borderRadius: 10 }}>
         <Image
           source={iconName}
@@ -31,6 +43,7 @@ const NavbarButton: React.FC<NavbarButtonProps> = ({ screenName, iconName }) => 
       </View>
     </TouchableOpacity>
   );
-}
+};
 
 export default NavbarButton;
+

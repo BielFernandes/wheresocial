@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import {
-Feed, CommentScreen, Home
+Feed, CommentScreen, Home, Configuration
 } from '../../screens';
 import { PrivateStackParamList } from './types';
 
@@ -33,6 +33,11 @@ export default function PrivateRoutes() {
       <Stack.Screen 
         name="Home" 
         component={Home} 
+        options={{ headerShown: true }} 
+      />
+      <Stack.Screen 
+        name="Configuration" 
+        component={Configuration} 
         options={{ headerShown: true }} 
       />
     </Stack.Navigator>
