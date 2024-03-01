@@ -42,9 +42,9 @@ const CommentScreen: React.FC<CommentScreenProps> = ({ route }) => {
           tags={post?.tags}
           endBorderRadius={false}
         />
-        <ScrollView>
+        <ScrollView horizontal={false} contentContainerStyle={{ alignItems: 'center', width:350 }}>
           {post?.comments.map(comment => (
-            <View key={comment.id}>
+            <View style={{alignItems:'center'}} key={comment.id}>
               <Comment nickname={comment.author} content={comment.content} />
             </View>
           ))}
@@ -74,7 +74,9 @@ const CommentScreen: React.FC<CommentScreenProps> = ({ route }) => {
           post={share?.post}
           endBorderRadius={false}
         />
-        <ScrollView>
+        <ScrollView
+          horizontal={false}
+        >
           {share?.comments.map(comment => (
             <View key={comment.id}>
               <Comment nickname={comment.author} content={comment.content} />

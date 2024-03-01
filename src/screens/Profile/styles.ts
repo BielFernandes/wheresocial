@@ -73,18 +73,19 @@ export const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'flex-end',
       width: '90%',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
       marginTop: 21,
+      gap:15
     },
-    bioView: { flexDirection: 'row', marginTop: 10, width: '90%', justifyContent: 'flex-start', alignItems: 'flex-end' },
+    bioView: { flexDirection: 'column', marginTop: 10, width: '90%', justifyContent: 'center', alignItems: 'center' },
     statsLabelView: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
     },
     statsLabel: {
-      fontSize: 16,
-      fontWeight: '500',
+      fontSize: 15,
+      fontWeight: '700',
       color: '#30323D',
     },
   });
