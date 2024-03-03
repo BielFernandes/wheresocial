@@ -1,7 +1,7 @@
 // Navbar.tsx
 import React from 'react';
 import { Dimensions, Modal, StyleSheet, View } from 'react-native';
-import NavbarButton from '../NavbarButton/NavbarButton';
+import NavbarButton from '../NavbarButton';
 import HamburgerMenu from '../HamburgerMenu';
 import { useHamburger } from '../../contexts/HamburgerContext';
 
@@ -27,12 +27,12 @@ const Navbar: React.FC = () => {
     <>
     <View style={{ flexDirection: 'row', height: 60, alignItems: 'center', justifyContent: 'space-around', backgroundColor: 'white' }}>
       <NavbarButton screenName="Home" iconName={homeImagePath}/>
-      <NavbarButton screenName="Feed" iconName={searchImagePath} />
-      <NavbarButton screenName="" iconName={cameraImagePath}/>
-      <NavbarButton screenName="" iconName={bellImagePath}/>
+      <NavbarButton screenName="Search" iconName={searchImagePath} />
+      <NavbarButton screenName="PictureFeed" iconName={cameraImagePath}/>
+      <NavbarButton screenName="Notification" iconName={bellImagePath}/>
       <NavbarButton screenName="Configuration" iconName={hamburgerImagePath} hamburger={true} onPress={openHamburgerMenu} />
     </View>
-    <Modal visible={hamburginho} transparent animationType="slide">
+    <Modal visible={hamburginho} transparent animationType="none">
       <View style={styles.modalContainer}>
         <HamburgerMenu closeMenu={closeHamburgerMenu} />
       </View>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    width: Dimensions.get('window').width * 1, // Define a largura para 50% da tela
+    width: Dimensions.get('window').width * 1,
   },
 });
 

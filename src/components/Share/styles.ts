@@ -4,7 +4,7 @@ import { Color, Spacing } from "../../styles"
 export const styles = StyleSheet.create({
     container:{flexDirection: 'column', width: 365},
     contentView:{gap: 8, flexDirection: 'column', width: '100%', padding:Spacing.Alternative, justifyContent: 'space-between', borderWidth: 1, borderColor:Color.LightGray, borderTopEndRadius:Spacing.ExtraSmall,borderTopStartRadius:Spacing.ExtraSmall},
-    userInfoView:{flexDirection: 'row', alignItems:'center', gap: Spacing.Base},
+    userInfoView:{flexDirection: 'row', alignItems:'center', gap:2},
     userPicture:{width:Spacing.TripleExtraLarge, height: Spacing.TripleExtraLarge, borderRadius: 200},
     content:{fontSize:16, color: Color.Dark},
     tagsContainer:{width: '100%', flexDirection: 'row', gap: Spacing.ExtraSmall},

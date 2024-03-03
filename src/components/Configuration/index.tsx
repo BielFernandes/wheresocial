@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../Navbar';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export function Configuration(props:any){

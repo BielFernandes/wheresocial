@@ -1,6 +1,9 @@
 export { Login } from "./Login";
 export { SignUp } from "./SignUp";
-export { Feed } from "./Profile";
+export { Profile } from "./Profile";
 export { CommentScreen } from "./CommentScreen";
 export { Home } from "./Home";
-export { Configuration } from "./Configuration"
+export { Search } from "./Search";
+export { PictureFeed } from "./PictureFeed";
+export { Notification } from "./Notification";
+export { Configuration } from "../components/Configuration"

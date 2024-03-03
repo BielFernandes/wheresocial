@@ -1,23 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Image,
   ScrollView,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-  GestureResponderEvent,
   ImageBackground,
 } from 'react-native';
-// import { SvgXml } from 'react-native-svg';
-import { PostComponent } from '../../components/Post/PostComponent';
-import { ShareComponent } from '../../components/Share/ShareComponent';
-import { LikeComponent } from '../../components/Like/LikeComponent';
-import PostsMocked from '../../mocks/posts.json'
-import SharesMocked from '../../mocks/shares.json'
-import { FeedProps } from './types';
+import { ProfileProps } from './types';
 import { styles } from './styles';
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../components/Navbar';
+import { UserProfileView } from '../../components/UserProfileView';
+import { ContentProfileOption } from '../../components/ContentProfileOption';
 
 
 type ToggleModalFunction = (closeModalBtn?: boolean) => void;
@@ -28,216 +18,19 @@ const EditProfileIcon = () => {
   // return <SvgXml xml={svgMarkup} width="20" height="20" />;
 };
 
-export function Feed({navigation}: FeedProps) {
-  const profilePicture = require('../../assets/profile.png');
+export function Profile({navigation}: ProfileProps) {
   const bannerPicture = require('../../assets/coverbanner.png');
 
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  const [username, setUsername] = useState('Edit');
-  const [nickname, setNickname] = useState('Edit');
-  const [location, setLocation] = useState('Edit');
-  const [bio, setBio] = useState(
-    '013, amante da natureza, etc. 013, amante da natureza, etc013, amante da natureza, etc. 013, amante da natureza, etc'
-  );
-
-  const [prevUsername, setPrevUsername] = useState(username);
-  const [prevNickname, setPrevNickname] = useState(nickname);
-  const [prevLocation, setPrevLocation] = useState(location);
-  const [prevBio, setPrevBio] = useState(bio);
-
-  const toggleModal: ToggleModalFunction = (closeModalBtn = false) => {
-    setModalVisible(!isModalVisible);
-    if (closeModalBtn) {
-      const updatedUserData = {
-        username: prevUsername,
-        nickname: prevNickname,
-        location: prevLocation,
-        bio: prevBio,
-      };
-      putUserData(updatedUserData);
-    }
-  };
-
-  function putUserData(updatedUserData: any) {
-    if (updatedUserData.username !== username) {
-      setUsername(updatedUserData.username);
-    }
-    if (updatedUserData.nickname !== nickname) {
-      setNickname(updatedUserData.nickname);
-    }
-    if (updatedUserData.location !== location) {
-      setLocation(updatedUserData.location);
-    }
-    if (updatedUserData.bio !== bio) {
-      setBio(updatedUserData.bio);
-    }
-  }
-
-  const [showFullText, setShowFullText] = useState(false);
-
-  const displayedText = showFullText ? bio : bio.slice(0, 50) + '...';
-
-  const [activeIndex, setActiveIndex] = useState('post');
-
-  const renderTabContent = () => {
-    if (activeIndex === 'post') {
-      return PostsMocked.map((post, index) => 
-        <View key={post.id}>
-          <PostComponent 
-            id={post.id} 
-            nickname={post.nickname} 
-            username={post.username} 
-            content={post.content} 
-            likesCount={post.like_count} 
-            tags={post.tags}   
-            endBorderRadius={true}
-            onPress={() => navigation.navigate('CommentScreen', {postId: post.id, type: 'post'})}
-            />
-        </View>);
-    } else if (activeIndex === 'share') {
-      return SharesMocked.map((share, index) => 
-        <View key={share.id}>
-          <ShareComponent 
-            id={share.id}
-            nickname={share.nickname}
-            username={share.username}
-            content={share.content}
-            likesCount={share.like_count}
-            post={share.post}
-            tags={share.tags}
-            endBorderRadius={true}
-            onPress={() => navigation.navigate('CommentScreen', {postId: share.id, type: 'share'})}
-            onPressToPost={() => navigation.navigate('CommentScreen', {postId: share.post.id, type: 'post'})}
-            />
-        </View>);
-    } else if (activeIndex === 'like') {
-      // return yourObject.Likes.map((likedPost, index) => <LikeComponent key={index} />);
-    }
-
-    return null;
-  };
 
   return (
       <>
       <ScrollView contentContainerStyle={{ flexGrow:1, alignItems: 'center' }}>
         <ImageBackground source={bannerPicture} style={styles.backgroundImage}/>
-        <Image source={profilePicture} style={styles.profilePic} />
-        <Text style={styles.userName}>{username}</Text>
-        <View style={styles.nicknameView}>
-          <Text style={styles.nicknameFont}>@{nickname}</Text>
-          <View
-            style={{ height: 20, width: 1.5, backgroundColor: '#888888', marginHorizontal: 5 }}
-          />
-          <Text style={styles.nicknameFont}>{location}</Text>
-          <TouchableOpacity
-            style={{ width: 0, marginHorizontal: 10 }}
-            onPress={(event: GestureResponderEvent) => toggleModal()}
-          >
-            {/* <EditProfileIcon /> */}
-          </TouchableOpacity>
-        </View>
-        <View style={styles.relationshipsConn}>
-          <View style={styles.statsLabelView}>
-            <Text style={styles.statsLabel}>Seguindo: </Text>
-            <Text style={{ fontSize: 14 }}>540</Text>
-          </View>
-          <View style={styles.statsLabelView}>
-            <Text style={styles.statsLabel}>Seguidores: </Text>
-            <Text style={{ fontSize: 14 }}>6.960</Text>
-          </View>
-        </View>
-        <View style={styles.bioView}>
-          <Text style={styles.statsLabel}>Biografia: </Text>
-          <Text style={{width: '100%', textAlign: 'center'}}>{displayedText}</Text>
-        </View>
-        {bio.length > 45 && (
-          <TouchableOpacity onPress={() => setShowFullText(!showFullText)}>
-            <Text style={{ fontSize: 12, color: '#5C80BC' }}>
-              {showFullText ? 'Mostrar menos' : 'Ver biografia completa'}
-            </Text>
-          </TouchableOpacity>
-        )}
-        <View>
-          <View style={{ flexDirection: 'row', marginTop: 24, width: '100%' }}>
-            <View>
-              <TouchableOpacity onPress={() => setActiveIndex('post')} style={{ padding: 10, width:120, alignItems: 'center', flexDirection:'column' }}>
-                <Text style={{ fontSize: 16, color: '#30323D' }}>Posts</Text>
-              </TouchableOpacity>
-              <View style={{
-                backgroundColor: activeIndex == 'post' ? '#5C80BC' : 'rgba(217, 217, 217, 1)', 
-                height: 2.5, 
-                width: 120}}/>
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => setActiveIndex('share')} style={{ padding: 10, width:120, alignItems: 'center' }}>
-                <Text style={{ fontSize: 16, color: '#30323D' }}>Re-posts</Text>
-              </TouchableOpacity>
-              <View style={{
-                backgroundColor: activeIndex == 'share' ? '#5C80BC' : 'rgba(217, 217, 217, 1)', 
-                height: 2.5, 
-                width: 120}}/>
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => setActiveIndex('like')} style={{ padding: 10, width:120, alignItems: 'center' }}>
-                <Text style={{ fontSize: 16, color: '#30323D' }}>Likes</Text>
-              </TouchableOpacity>
-              <View style={{
-                backgroundColor: activeIndex == 'like' ? '#5C80BC' : 'rgba(217, 217, 217, 1)', 
-                height: 2.5, 
-                width: 120}}/>
-            </View>
-          </View>
-          <View style={{width: '100%', marginTop: 16, marginBottom:16, gap: 16}}>
-            {renderTabContent()}
-          </View>
-        </View>
-        {isModalVisible && (
-          <>
-            <View style={styles.modalBackground} />
-            <View style={styles.modal}>
-              <TouchableOpacity
-                style={{ position: 'absolute', left: 330, bottom: 390 }}
-                onPress={(event: GestureResponderEvent) => toggleModal(false)}
-              >
-                <Text style={{ color: 'black', fontSize: 24 }}>X</Text>
-              </TouchableOpacity>
-              <View>
-                <Text style={styles.inputModalLabels}>Nome</Text>
-                <TextInput
-                  value={prevUsername}
-                  onChangeText={(text) => setPrevUsername(text)}
-                  style={styles.input}
-                />
-              </View>
-              <View>
-                <Text style={styles.inputModalLabels}>Nome de usuário</Text>
-                <TextInput
-                  value={prevNickname}
-                  onChangeText={(text) => setPrevNickname(text)}
-                  style={styles.input}
-                />
-              </View>
-              <View>
-                <Text style={styles.inputModalLabels}>Localização</Text>
-                <TextInput
-                  value={prevLocation}
-                  onChangeText={(text) => setPrevLocation(text)}
-                  style={styles.input}
-                />
-              </View>
-              <View>
-                <Text style={{ ...styles.inputModalLabels }}>Biografia</Text>
-                <TextInput
-                  value={prevBio}
-                  onChangeText={(text) => setPrevBio(text)}
-                  style={styles.inputBio}
-                />
-              </View>
-              <TouchableOpacity onPress={(event: GestureResponderEvent) => toggleModal(true)} style={{height: 50, backgroundColor: '#5C80BC', marginTop: 12, borderRadius: 8, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'white'}}>Salvar</Text></TouchableOpacity>
-            </View>
-          </>
-        )}
+        <UserProfileView
+        />
+        <ContentProfileOption
+          navigation={navigation}
+        />
       </ScrollView>
       <Navbar/>
       </>

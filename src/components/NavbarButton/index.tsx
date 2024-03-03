@@ -8,10 +8,8 @@ interface NavbarButtonProps {
   screenName?: string;
   iconName: ImageSourcePropType;
   hamburger?: boolean;
-  onPress?: () => void; // Adicione a propriedade onPress
+  onPress?: () => void; 
 }
-
-// ...
 
 const NavbarButton: React.FC<NavbarButtonProps> = ({ screenName, iconName, hamburger }) => {
   const navigation = useNavigation();

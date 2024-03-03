@@ -5,11 +5,11 @@ import { RouteProp } from '@react-navigation/native';
 import { PrivateStackParamList } from '../../routes/PrivateRoutes/types';
 import Posts from "../../mocks/posts.json"
 import Shares from "../../mocks/shares.json"
-import { PostComponent } from '../../components/Post/PostComponent';
-import { Comment } from '../../components/Comment/Comment';
+import { PostComponent } from '../../components/Post';
+import { Comment } from '../../components/Comment';
 import { ScrollView } from 'react-native-gesture-handler';
-import { ShareComponent } from '../../components/Share/ShareComponent';
-import Navbar from '../../components/Navbar/Navbar';
+import { ShareComponent } from '../../components/Share';
+import Navbar from '../../components/Navbar';
 
 type PostDetailsRouteProp = RouteProp<PrivateStackParamList, 'CommentScreen'>;
 
@@ -75,10 +75,10 @@ const CommentScreen: React.FC<CommentScreenProps> = ({ route }) => {
           endBorderRadius={false}
         />
         <ScrollView
-          horizontal={false}
+          horizontal={false} contentContainerStyle={{ alignItems: 'center', width:350 }}
         >
           {share?.comments.map(comment => (
-            <View key={comment.id}>
+            <View style={{alignItems:'center'}} key={comment.id}>
               <Comment nickname={comment.author} content={comment.content} />
             </View>
           ))}
